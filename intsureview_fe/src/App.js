@@ -14,20 +14,35 @@ function App() {
   });
 
   function handleInputChange(e) {
-    const name = e.target.name;
-    let value = e.target.value;
+    setNewPuppy({ ...newPuppy, [e.target.name]: e.target.value });
+  }
 
+  function handleSelectionChange(e) {
     // Convert isAdopable from string to boolean
-    if (name === "isAdoptable") {
-      value = value === "true";
-    }
-    setNewPuppy({ ...newPuppy, [name]: value });
+    const value = e.target.value === "true";
+
+    setNewPuppy({ ...newPuppy, isAdoptable: value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    console.log(newPuppy);
+    if (validateInputs()) {
+      console.log(newPuppy);
+    } else {
+      alert("One or more inputs are invalid. Please try again.");
+    }
+  }
+
+  function validateInputs() {
+    return (
+      newPuppy.name &&
+      newPuppy.breed &&
+      newPuppy.color &&
+      newPuppy.weight >= 0 &&
+      newPuppy.weight <= 1000 &&
+      typeof newPuppy.isAdoptable === "boolean"
+    );
   }
 
   return (
@@ -36,6 +51,7 @@ function App() {
       <Form
         newPuppy={newPuppy}
         handleInputChange={handleInputChange}
+        handleSelectionChange={handleSelectionChange}
         handleSubmit={handleSubmit}
       />
     </div>

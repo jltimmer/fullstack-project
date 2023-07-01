@@ -1,4 +1,9 @@
-function Form({ newPuppy, handleInputChange, handleSubmit }) {
+function Form({
+  newPuppy,
+  handleInputChange,
+  handleSelectionChange,
+  handleSubmit,
+}) {
   return (
     <form onSubmit={handleSubmit}>
       <div className="row mb-3">
@@ -16,7 +21,7 @@ function Form({ newPuppy, handleInputChange, handleSubmit }) {
         </div>
       </div>
       <div className="row mb-3">
-        <label className="col-sm-3 offset-sm-2 col-form-label">
+        <label className="col-sm-3 offset-sm-1 col-form-label">
           Adoption Available
         </label>
         <div className="col-sm-2">
@@ -24,7 +29,7 @@ function Form({ newPuppy, handleInputChange, handleSubmit }) {
             className="form-select"
             name="isAdoptable"
             value={newPuppy["isAdoptable"]}
-            onChange={handleInputChange}
+            onChange={handleSelectionChange}
           >
             <option value={true}>Yes</option>
             <option value={false}>No</option>
@@ -40,6 +45,7 @@ function Form({ newPuppy, handleInputChange, handleSubmit }) {
             name="breed"
             value={newPuppy["breed"]}
             onChange={handleInputChange}
+            required
           />
         </div>
       </div>
@@ -52,6 +58,7 @@ function Form({ newPuppy, handleInputChange, handleSubmit }) {
             name="color"
             value={newPuppy["color"]}
             onChange={handleInputChange}
+            required
           />
         </div>
       </div>
@@ -59,13 +66,14 @@ function Form({ newPuppy, handleInputChange, handleSubmit }) {
         <label className="col-sm-2 offset-sm-2 col-form-label">
           Weight (lbs)
         </label>
-        <div className="col-sm-4">
+        <div className="col-sm-2">
           <input
             className="form-control"
             type="number"
             name="weight"
             value={newPuppy["weight"]}
             onChange={handleInputChange}
+            required
           />
         </div>
       </div>
