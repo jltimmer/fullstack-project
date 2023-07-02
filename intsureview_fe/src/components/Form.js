@@ -17,6 +17,7 @@ function Form({
             name="name"
             value={newPuppy["name"]}
             onChange={handleInputChange}
+            required
           />
         </div>
       </div>
@@ -72,6 +73,8 @@ function Form({
             type="number"
             name="weight"
             value={newPuppy["weight"]}
+            min={0}
+            max={1000}
             onChange={handleInputChange}
             required
           />

@@ -45,19 +45,25 @@ function App() {
           console.log(res);
         });
     } else {
-      alert("One or more inputs are invalid. Please try again.");
+      alert(
+        "Invalid input! \nMake sure you're not using any special characters and try again."
+      );
     }
   }
 
   function validateInputs() {
     return (
-      newPuppy.name &&
-      newPuppy.breed &&
-      newPuppy.color &&
+      validateStringInput(newPuppy.name) &&
+      validateStringInput(newPuppy.breed) &&
+      validateStringInput(newPuppy.color) &&
       newPuppy.weight >= 0 &&
       newPuppy.weight <= 1000 &&
       typeof newPuppy.isAdoptable === "boolean"
     );
+  }
+
+  function validateStringInput(input) {
+    return input.match(/^[a-zA-Z]+$/) ? true : false;
   }
 
   return (
