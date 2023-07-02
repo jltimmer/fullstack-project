@@ -7,13 +7,14 @@ import { useState } from "react";
 import axios from "axios";
 
 function App() {
-  const [newPuppy, setNewPuppy] = useState({
+  const blankPuppy = {
     name: "",
     isAdoptable: true,
     breed: "",
     color: "",
     weight: 0,
-  });
+  };
+  const [newPuppy, setNewPuppy] = useState(blankPuppy);
 
   function handleInputChange(e) {
     setNewPuppy({ ...newPuppy, [e.target.name]: e.target.value });
@@ -42,7 +43,8 @@ function App() {
           } else if (res.status == 400) {
             alert("Error: failed to submit");
           }
-          console.log(res);
+
+          setNewPuppy(blankPuppy);
         });
     } else {
       alert(
@@ -63,7 +65,7 @@ function App() {
   }
 
   function validateStringInput(input) {
-    return input.match(/^[a-zA-Z]+$/) ? true : false;
+    return input.match(/^[\w\- ]+$/) ? true : false;
   }
 
   return (
