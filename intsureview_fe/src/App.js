@@ -2,6 +2,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Header from "./components/Header";
 import Form from "./components/Form";
+import Footer from "./components/Footer";
 import { useState } from "react";
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
         handleSelectionChange={handleSelectionChange}
         handleSubmit={handleSubmit}
       />
+      <Footer />
     </div>
   );
 }
